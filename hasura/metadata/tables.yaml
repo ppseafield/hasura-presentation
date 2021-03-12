@@ -1,1 +1,14 @@
-[]
+- table:
+    schema: public
+    name: posts
+  select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+      - id
+      - title
+      - body
+      - created_at
+      - updated_at
+      filter: {}
+      allow_aggregations: true
