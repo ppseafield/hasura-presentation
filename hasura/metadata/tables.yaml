@@ -1,6 +1,31 @@
 - table:
     schema: public
+    name: comments
+  object_relationships:
+  - name: post
+    using:
+      foreign_key_constraint_on: post_id
+  select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+      - id
+      - comment_body
+      - created_at
+      - updated_at
+      - post_id
+      filter: {}
+- table:
+    schema: public
     name: posts
+  array_relationships:
+  - name: comments
+    using:
+      foreign_key_constraint_on:
+        column: post_id
+        table:
+          schema: public
+          name: comments
   select_permissions:
   - role: anonymous
     permission:

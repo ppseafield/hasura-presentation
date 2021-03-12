@@ -1,1 +1,4 @@
-[]
+- name: SpaceX
+  definition:
+    url: https://api.spacex.land/graphql/
+    timeout_seconds: 60

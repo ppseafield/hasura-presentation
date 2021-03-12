@@ -10,7 +10,16 @@
           v-for="post in data.posts"
           :key="post.id"
         >
-          {{ post.title }}
+          <h3>{{ post.title }}</h3>
+
+          <ul>
+            <li
+              v-for="comment in post.comments"
+              :key="comment.id"
+            >
+              {{ comment.comment_body }}
+            </li>
+          </ul>
         </li>
       </ul>
     </template>
@@ -30,6 +39,10 @@ const { data, fetching, error } = useQuery({
       created_at
       body
       updated_at
+      comments {
+        id
+        comment_body
+      }
     }
   }
   `
